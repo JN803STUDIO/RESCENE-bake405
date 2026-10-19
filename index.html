@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RESCENE BREAD ARCHIVE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="img/logo.png" alt="RESC&Eacute;NE × Bake405">
+    <div class="wallet">
+      <span class="money" id="money">5,000원</span>
+      <button class="pink" onclick="add(100)">+100원 벌기</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>빵</h2>
+      <div class="breads" id="breadList"></div>
+    </section>
+
+    <section>
+      <h2>
+        편의점 재고
+        <button class="dark refresh" onclick="refresh()">새로고침</button>
+      </h2>
+      <div class="orderbar">
+        <p class="order" id="orderText">제품을 선택하세요.</p>
+        <button class="dark hidden" id="pickAll" onclick="pickAll()">일괄 선택</button>
+        <button class="pink" id="orderButton" onclick="order()" disabled>주문하기</button>
+      </div>
+      <div id="storeList"></div>
+    </section>
+
+    <section>
+      <h2>인벤토리</h2>
+      <div class="inventory">
+
+        <div class="panel">
+          <div id="inventoryList">가진 빵이 없습니다.</div>
+        </div>
+
+        <div class="panel">
+          <div class="bagarea">
+            <div class="bag" id="bag"></div>
+            <button class="dark" onclick="opn()">봉지 뜯기</button>
+            <button class="pink hidden" id="openAll" onclick="openAll()">일괄 오픈</button>
+          </div>
+
+          <div class="result">
+            <div class="fakecard">
+              <div class="fakeinner" id="lastCard">RESCENE<br>PHOTO CARD</div>
+            </div>
+            <div>
+              <h3 id="resultTitle">획득한 카드 없음</h3>
+              <p id="resultText"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>
+        도감
+        <span class="count" id="collectionCount">0 / 27</span>
+      </h2>
+      <div class="tabs" id="tabs"></div>
+      <div class="collection" id="collectionList"></div>
+    </section>
+
+    <section>
+      <h2>기록</h2>
+      <div class="stats" id="stats"></div>
+    </section>
+
+  </main>
+
+  <div class="stage hidden" id="stage">
+    <div class="stagebox">
+      <button class="dark stageclose" id="stageClose" onclick="closeStage()">닫기</button>
+      <button class="dark stagegd" id="stageGd" onclick="stageGd()">가이드 ON</button>
+      <div class="tablewrap">
+        <div class="table" id="table"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="dbg" id="dbgButton" onclick="toggleDbg()">관리자 디버그 OFF</button>
+  <button class="dbg gdbtn on hidden" id="gdButton" onclick="toggleGd()">가이드 ON</button>
+
+  <div class="zoomlayer hidden" id="zoomLayer"></div>
+
+  <div class="pwlayer hidden" id="pwLayer" onclick="if (event.target === this) closePw()">
+    <div class="pwbox" id="pwBox">
+      <div class="pwlock">🔒</div>
+      <h3>관리자 모드</h3>
+      <p>비밀번호 4자리를 입력하세요</p>
+      <div class="pwdots" id="pwDots"><i></i><i></i><i></i><i></i></div>
+      <p class="pwerr" id="pwErr"></p>
+      <div class="pwpad">
+        <button onclick="pwKey('1')">1</button>
+        <button onclick="pwKey('2')">2</button>
+        <button onclick="pwKey('3')">3</button>
+        <button onclick="pwKey('4')">4</button>
+        <button onclick="pwKey('5')">5</button>
+        <button onclick="pwKey('6')">6</button>
+        <button onclick="pwKey('7')">7</button>
+        <button onclick="pwKey('8')">8</button>
+        <button onclick="pwKey('9')">9</button>
+        <button class="sub" onclick="closePw()">취소</button>
+        <button onclick="pwKey('0')">0</button>
+        <button class="sub" onclick="pwBack()">⌫</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js.js"></script>
+</body>
+</html>
