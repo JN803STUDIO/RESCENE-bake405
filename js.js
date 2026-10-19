@@ -1003,3 +1003,15 @@ function cancelOrder() {
   h("orderText", "주문이 취소되었습니다. 결제 금액 " + won(tot) + "이 환불되었습니다.");
   dS();
 }
+
+let lastTap = 0;
+document.addEventListener("touchend", e => {
+  const now = Date.now();
+  if (now - lastTap < 350) {
+    e.preventDefault();
+    e.target.closest("button")?.click();
+  }
+  lastTap = now;
+}, { passive: false });
+
+document.addEventListener("dblclick", e => e.preventDefault());
