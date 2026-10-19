@@ -1184,3 +1184,9 @@ html:has(.stage:not(.hidden)) body {
   overscroll-behavior: contain;
   touch-action: none;
 }
+
+html,
+body,
+button {
+  touch-action: manipulation;
+}
