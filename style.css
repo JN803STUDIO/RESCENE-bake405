@@ -1017,17 +1017,29 @@ button:hover {
 .pwlock .shk {
   transform-box: view-box;
   transform-origin: 16.5px 11px;
-  transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.pwbox.ok {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .pwbox.ok .pwlock {
-  color: #ee7fa6;
-  background: #fde8f0;
-  animation: pwunlock 0.45s;
+  animation: pwwiggle 0.4s ease-in-out, pwbg 0.3s 0.55s forwards, pwunlock 0.45s 0.55s;
+  transform: scale(1.35);
+  margin-bottom: 22px;
 }
 
 .pwbox.ok .shk {
-  transform: translateY(-3.5px) rotate(-30deg);
+  animation: pwshackle 0.5s 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) forwards;
+}
+
+.pwbox.ok h3,
+.pwbox.ok #pwMsg {
+  opacity: 0;
+  animation: pwtext 0.3s 0.7s forwards;
 }
 
 .pwbox.ok .pwdots,
@@ -1043,7 +1055,29 @@ button:hover {
 }
 
 @keyframes pwunlock {
-  50% { transform: scale(1.15); }
+  50% { transform: scale(1.55); }
+  100% { transform: scale(1.35); }
+}
+
+@keyframes pwwiggle {
+  0%, 100% { transform: scale(1.35) rotate(0); }
+  25% { transform: scale(1.35) rotate(-10deg); }
+  75% { transform: scale(1.35) rotate(10deg); }
+}
+
+@keyframes pwshackle {
+  0% { transform: none; }
+  40% { transform: translateY(-4px); }
+  100% { transform: translateY(-4px) rotate(-30deg); }
+}
+
+@keyframes pwbg {
+  to { color: #ee7fa6; background: #fde8f0; }
+}
+
+@keyframes pwtext {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
 }
 
 .pwbox h3 {

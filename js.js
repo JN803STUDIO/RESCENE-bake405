@@ -864,6 +864,7 @@ function pwDraw() {
 
 function openPw() {
   document.getElementById("pwBox").classList.remove("ok", "shake");
+  document.getElementById("pwBox").style.height = "";
   h("pwTitle", "관리자 모드");
   h("pwMsg", "비밀번호 4자리를 입력하세요");
   pw = "";
@@ -891,13 +892,15 @@ function pwBack() {
 
 function checkPw() {
   if (pw === "9421") {
-    document.getElementById("pwBox").classList.add("ok");
+    const b = document.getElementById("pwBox");
+    b.style.height = px(b.offsetHeight);
+    b.classList.add("ok");
     h("pwTitle", "잠금 해제");
     h("pwMsg", "관리자 모드가 켜졌습니다");
     setTimeout(() => {
       closePw();
       setDbg(true);
-    }, 1000);
+    }, 2000);
     return;
   }
   h("pwErr", "비밀번호가 틀렸습니다");
