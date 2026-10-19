@@ -1102,3 +1102,13 @@ button:hover {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cfilter id='f' x='-30%' y='-30%' width='160%' height='160%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='16'/%3E%3CfeGaussianBlur stdDeviation='1.6'/%3E%3C/filter%3E%3Cfilter id='t' x='-30%' y='-30%' width='160%' height='160%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.08' numOctaves='2' seed='3'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='10'/%3E%3CfeGaussianBlur stdDeviation='2.4'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%23fffcf3' filter='url(%23f)'%3E%3Cpath fill-opacity='.6' d='M72 82C90 68 118 70 127 85C133 97 119 103 105 98C93 94 82 101 74 96C66 91 64 87 72 82Z'/%3E%3Cpath fill-opacity='.5' d='M112 119C123 111 139 116 139 125C139 133 127 133 119 131C111 129 106 124 112 119Z'/%3E%3Cpath fill-opacity='.38' d='M58 113C64 108 73 110 73 116C71 121 63 121 58 117Z'/%3E%3Cpath fill-opacity='.32' d='M86 99C96 103 104 109 107 117C100 115 91 110 85 104Z'/%3E%3C/g%3E%3Cg fill='%23fff' filter='url(%23t)'%3E%3Cpath fill-opacity='.45' d='M84 82C96 76 112 78 118 86C110 88 98 86 86 88Z'/%3E%3Cpath fill-opacity='.35' d='M118 120C126 117 134 120 134 124C127 125 121 124 118 122Z'/%3E%3C/g%3E%3C/svg%3E") center / 100% 100% no-repeat;
   pointer-events: none;
 }
+
+html:has(.stage:not(.hidden)),
+html:has(.stage:not(.hidden)) body {
+  overflow: hidden;
+}
+
+.stage {
+  overscroll-behavior: contain;
+  touch-action: none;
+}
