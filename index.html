@@ -98,9 +98,11 @@
 
   <div class="pwlayer hidden" id="pwLayer" onclick="if (event.target === this) closePw()">
     <div class="pwbox" id="pwBox">
-      <div class="pwlock">🔒</div>
-      <h3>관리자 모드</h3>
-      <p>비밀번호 4자리를 입력하세요</p>
+      <div class="pwlock">
+        <svg viewBox="0 0 24 24"><path class="shk" d="M8 11V7.5a4 4 0 0 1 8 0V11"/><rect x="5" y="11" width="14" height="10" rx="2.5"/><path class="hole" d="M12 15v2.2"/></svg>
+      </div>
+      <h3 id="pwTitle">관리자 모드</h3>
+      <p id="pwMsg">비밀번호 4자리를 입력하세요</p>
       <div class="pwdots" id="pwDots"><i></i><i></i><i></i><i></i></div>
       <p class="pwerr" id="pwErr"></p>
       <div class="pwpad">

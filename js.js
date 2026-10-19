@@ -863,6 +863,9 @@ function pwDraw() {
 }
 
 function openPw() {
+  document.getElementById("pwBox").classList.remove("ok", "shake");
+  h("pwTitle", "관리자 모드");
+  h("pwMsg", "비밀번호 4자리를 입력하세요");
   pw = "";
   pwDraw();
   h("pwErr", "");
@@ -874,7 +877,7 @@ function closePw() {
 }
 
 function pwKey(n) {
-  if (pw.length >= 4) return;
+  if (pw.length >= 4 || document.getElementById("pwBox").classList.contains("ok")) return;
   pw += n;
   h("pwErr", "");
   pwDraw();
@@ -888,8 +891,14 @@ function pwBack() {
 
 function checkPw() {
   if (pw === "9421") {
-    closePw();
-    return setDbg(true);
+    document.getElementById("pwBox").classList.add("ok");
+    h("pwTitle", "잠금 해제");
+    h("pwMsg", "관리자 모드가 켜졌습니다");
+    setTimeout(() => {
+      closePw();
+      setDbg(true);
+    }, 1000);
+    return;
   }
   h("pwErr", "비밀번호가 틀렸습니다");
   pw = "";

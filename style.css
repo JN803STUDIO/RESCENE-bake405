@@ -999,13 +999,57 @@ button:hover {
 .pwlock {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   margin: 0 auto 10px;
-  font-size: 24px;
+  color: #e0245e;
   background: #fff;
   border-radius: 50%;
   box-shadow: 0 4px 14px rgba(224, 36, 94, 0.2);
+  transition: background 0.3s, color 0.3s;
+}
+
+.pwlock svg {
+  width: 28px;
+  height: 28px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pwlock .shk {
+  transform-box: view-box;
+  transform-origin: 16px 11px;
+  transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.pwbox.ok .pwlock {
+  color: #fff;
+  background: #e0245e;
+  animation: pwunlock 0.45s;
+}
+
+.pwbox.ok .shk {
+  transform: translateY(-3px) rotate(-32deg);
+}
+
+.pwbox.ok .pwdots,
+.pwbox.ok .pwerr,
+.pwbox.ok .pwpad {
+  display: none;
+}
+
+.pwbox.ok #pwMsg {
+  margin-top: 4px;
+  color: #e0245e;
+  font-weight: bold;
+}
+
+@keyframes pwunlock {
+  50% { transform: scale(1.15); }
 }
 
 .pwbox h3 {
